@@ -1,24 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
-<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
-  <metadata>
-    <id>livesplit</id>
-    <version>1.8.20</version>
-    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-livesplit/tree/v1.8.20</packageSourceUrl>
-    <owners>kraftydinosaur geo_trader sublym0nal davvolun</owners>
-    <title>LiveSplit</title>
-    <authors>Christopher Serr (CryZe107), Sergey Papushin (wooferzfg)</authors>
-    <projectUrl>https://livesplit.org/</projectUrl>
-    <iconUrl>https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-livesplit@438486d57a08edc15012d6151f9da3be01263112/livesplit.png</iconUrl>
-    <copyright>Copyright (c) 2013-2022 Christopher Serr and Sergey Papushin</copyright>
-    <licenseUrl>https://github.com/LiveSplit/LiveSplit/blob/1.8.20/LICENSE</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/LiveSplit/LiveSplit/tree/1.8.20</projectSourceUrl>
-    <docsUrl>https://livesplit.org/faq/</docsUrl>
-    <bugTrackerUrl>https://github.com/LiveSplit/LiveSplit/issues</bugTrackerUrl>
-    <tags>livesplit speedrunning speedruns speedrun timer split game games portable embedded foss</tags>
-    <summary>LiveSplit is a timer program for speedrunners that is both easy to use and full of features.</summary>
-    <description><![CDATA[
+
 ---
 ### [choco://livesplit](choco://livesplit)
 To use choco:// protocol URLs, install [(unofficial) choco:// Protocol support](https://chocolatey.org/packages/choco-protocol-support)
@@ -58,21 +38,3 @@ LiveSplit is a timer program for speedrunners that is both easy to use and full 
 ## Package Parameters
 
 * `/Start` - Automatically start LiveSplit after installation completes.
-]]></description>
-    <releaseNotes>https://github.com/LiveSplit/LiveSplit/releases/tag/1.8.20</releaseNotes>
-    <dependencies>
-      <dependency id="dotnetfx" version="4.6.1.0" />
-    </dependencies>
-  </metadata>
-  <files>
-    <file src="tools\chocolateybeforemodify.ps1" target="tools" />
-    <file src="tools\chocolateyinstall.ps1" target="tools" />
-    <file src="tools\chocolateyuninstall.ps1" target="tools" />
-    <file src="tools\LiveSplit_*.zip" target="tools" />
-    <file src="legal\LICENSE.txt" target="legal" />
-    <file src="legal\VERIFICATION.txt" target="legal" />
-    <file src="tools\LiveSplit.exe.gui" target="tools" />
-    <file src="tools\LiveSplit.Register.exe.ignore" target="tools" />
-    <file src="tools\Components\CefSharp.BrowserSubprocess.exe.ignore" target="tools\Components" />
-  </files>
-</package>
