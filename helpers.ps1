@@ -1,4 +1,4 @@
-$installerFileNameRegex = 'LiveSplit_([\d\.]+)\.zip$'
+﻿$installerFileNameRegex = 'LiveSplit_([\d\.]+)\.zip$'
 $repo = 'LiveSplit/LiveSplit'
 
 $gitHubApiReleases = "https://api.github.com/repos/$repo/releases"
