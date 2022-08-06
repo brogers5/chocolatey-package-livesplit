@@ -2,7 +2,7 @@
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-$archiveFileName = 'LiveSplit_1.8.20.zip'
+$archiveFileName = 'LiveSplit_1.8.21.zip'
 $archiveFilePath = Join-Path -Path $toolsDir -ChildPath $archiveFileName
 
 $packageArgs = @{
