@@ -1,13 +1,9 @@
 ﻿$ErrorActionPreference = 'Stop'
 
 $programsDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::Programs)
+$shortcutFilePath = Join-Path -Path $programsDirectory -ChildPath 'LiveSplit.lnk'
 
-foreach ($shortcutFileName in $possibleShortcutFileNames)
+if (Test-Path -Path $shortcutFilePath)
 {
-  $shortcutFilePath = Join-Path -Path $programsDirectory -ChildPath 'LiveSplit.lnk'
-
-  if (Test-Path -Path $shortcutFilePath)
-  {
-      Remove-Item -Path $shortcutFilePath -Force
-  }
+    Remove-Item -Path $shortcutFilePath -Force
 }
