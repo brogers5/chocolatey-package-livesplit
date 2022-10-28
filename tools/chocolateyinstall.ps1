@@ -17,13 +17,27 @@ Get-ChocolateyUnzip @packageArgs
 Remove-Item $archiveFilePath -Force -ErrorAction SilentlyContinue
 
 $softwareName = 'LiveSplit'
+$binaryFileName = 'LiveSplit.exe'
+$targetPath = Join-Path -Path $toolsDir -ChildPath $binaryFileName
 
 $programsDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::Programs)
 $shortcutFilePath = Join-Path -Path $programsDirectory -ChildPath "$softwareName.lnk"
-$targetPath = Join-Path -Path $toolsDir -ChildPath 'LiveSplit.exe'
 Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -RunAsAdmin -ErrorAction SilentlyContinue
 
 $pp = Get-PackageParameters
+if ($pp.NoShim)
+{
+  #Create shim ignore file
+  $ignoreFilePath = Join-Path -Path $toolsDir -ChildPath "$binaryFileName.ignore"
+  Set-Content -Path $ignoreFilePath -Value $null -ErrorAction SilentlyContinue
+}
+else
+{
+  #Create GUI shim
+  $guiShimPath = Join-Path -Path $toolsDir -ChildPath "$binaryFileName.gui"
+  Set-Content -Path $guiShimPath -Value $null -ErrorAction SilentlyContinue
+}
+
 if ($pp.Start)
 {
   try
