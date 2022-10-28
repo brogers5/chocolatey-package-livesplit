@@ -38,4 +38,5 @@ LiveSplit is a timer program for speedrunners that is both easy to use and full 
 ## Package Parameters
 
 * `/NoShim` - Opt out of creating a GUI shim.
+* `/NoProgramsShortcut` - Opt out of creating a Programs shortcut in your Start Menu.
 * `/Start` - Automatically start LiveSplit after installation completes.
