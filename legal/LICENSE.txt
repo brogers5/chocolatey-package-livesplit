@@ -1,4 +1,4 @@
-From: https://raw.githubusercontent.com/LiveSplit/LiveSplit/1.8.21/LICENSE
+From: https://raw.githubusercontent.com/LiveSplit/LiveSplit/1.8.22/LICENSE
 
 The MIT License (MIT)
 
