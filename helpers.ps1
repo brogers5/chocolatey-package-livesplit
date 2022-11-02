@@ -1,14 +1,14 @@
-﻿$installerFileNameRegex = 'LiveSplit_([\d\.]+)\.zip$'
-$repo = 'LiveSplit/LiveSplit'
+﻿Import-Module PowerShellForGitHub
 
-$gitHubApiReleases = "https://api.github.com/repos/$repo/releases"
-$latestReleaseUri = "$gitHubApiReleases/latest"
+$installerFileNameRegex = 'LiveSplit_([\d\.]+)\.zip$'
+$owner = 'LiveSplit'
+$repository = 'LiveSplit'
 
 function Get-LatestStableVersion
 {
-    $releaseDetails = Invoke-RestMethod -Uri $latestReleaseUri -Method Get -UseBasicParsing
+    $latestRelease = (Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Latest)[0]
 
-    return [Version] $releaseDetails.tag_name
+    return [Version] $latestRelease.tag_name
 }
 
 function Get-SoftwareUri
@@ -18,18 +18,17 @@ function Get-SoftwareUri
         [Version] $Version
     )
 
-    $uri = $null
     if ($null -eq $Version)
     {
         # Default to latest stable version
-        $uri = $latestReleaseUri
+        $release = (Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Latest)[0]
     }
     else 
     {
-        $uri = "$gitHubApiReleases/tags/$($Version)"
+        $release = Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Tag $Version.ToString()
     }
-    $releaseDetails = Invoke-RestMethod -Uri $uri -Method Get -UseBasicParsing
-    $releaseAssets = Invoke-RestMethod -Uri $releaseDetails.assets_url -Method Get -UseBasicParsing
+
+    $releaseAssets = Get-GitHubReleaseAsset -OwnerName $owner -RepositoryName $repository -Release $release.ID
 
     $windowsArchiveAsset = $null
     foreach ($asset in $releaseAssets)
