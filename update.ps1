@@ -3,7 +3,6 @@ Import-Module au
 $currentPath = (Split-Path $MyInvocation.MyCommand.Definition)
 . $currentPath\helpers.ps1
 
-$toolsPath = Join-Path -Path $currentPath -ChildPath 'tools'
 $legalPath = Join-Path -Path $currentPath -ChildPath 'legal'
 $softwareRepo = 'LiveSplit/LiveSplit'
 $softwareTagPattern = "$($Latest.SoftwareVersion)"
