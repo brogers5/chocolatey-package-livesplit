@@ -4,37 +4,31 @@ $installerFileNameRegex = 'LiveSplit_([\d\.]+)\.zip$'
 $owner = 'LiveSplit'
 $repository = 'LiveSplit'
 
-function Get-LatestStableVersion
-{
+function Get-LatestStableVersion {
     $latestRelease = (Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Latest)[0]
 
     return [Version] $latestRelease.tag_name
 }
 
-function Get-SoftwareUri
-{
+function Get-SoftwareUri {
     [CmdletBinding()]
     param(
         [Version] $Version
     )
 
-    if ($null -eq $Version)
-    {
+    if ($null -eq $Version) {
         # Default to latest stable version
         $release = (Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Latest)[0]
     }
-    else 
-    {
+    else {
         $release = Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Tag $Version.ToString()
     }
 
     $releaseAssets = Get-GitHubReleaseAsset -OwnerName $owner -RepositoryName $repository -Release $release.ID
 
     $windowsArchiveAsset = $null
-    foreach ($asset in $releaseAssets)
-    {
-        if ($asset.name -match $installerFileNameRegex)
-        {
+    foreach ($asset in $releaseAssets) {
+        if ($asset.name -match $installerFileNameRegex) {
             $windowsArchiveAsset = $asset
             break;
         }
@@ -43,8 +37,7 @@ function Get-SoftwareUri
         }
     }
 
-    if ($null -eq $windowsArchiveAsset)
-    {
+    if ($null -eq $windowsArchiveAsset) {
         throw "Cannot find published Windows archive asset!"
     }
 

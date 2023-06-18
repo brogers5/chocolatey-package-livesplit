@@ -9,7 +9,7 @@ $nuspecFileRelativePath = Join-Path -Path $currentPath -ChildPath 'livesplit.nus
 $version = [Version] $nuspec.package.metadata.version
 
 $global:Latest = @{
-    Url32 = Get-SoftwareUri -Version $version
+    Url32   = Get-SoftwareUri -Version $version
     Version = $version
 }
 
