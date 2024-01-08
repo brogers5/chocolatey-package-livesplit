@@ -13,8 +13,8 @@ $global:Latest = @{
     Version = $version
 }
 
-Write-Output "Downloading..."
+Write-Output 'Downloading...'
 Get-RemoteFiles -Purge -NoSuffix
 
-Write-Output "Creating package..."
+Write-Output 'Creating package...'
 choco pack $nuspecFileRelativePath

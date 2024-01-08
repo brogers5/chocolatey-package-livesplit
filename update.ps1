@@ -21,9 +21,9 @@ function global:au_BeforeUpdate ($Package) {
 
     $templateFilePath = Join-Path -Path $legalPath -ChildPath 'VERIFICATION.txt.template'
     $verificationFilePath = Join-Path -Path $legalPath -ChildPath 'VERIFICATION.txt'
-    Copy-Item -Path $templateFilePath  -Destination $verificationFilePath -Force
+    Copy-Item -Path $templateFilePath -Destination $verificationFilePath -Force
 
-    Set-DescriptionFromReadme -Package $Package -ReadmePath ".\DESCRIPTION.md"
+    Set-DescriptionFromReadme -Package $Package -ReadmePath '.\DESCRIPTION.md'
 }
 
 function global:au_AfterUpdate ($Package) {
@@ -37,11 +37,11 @@ function global:au_AfterUpdate ($Package) {
 function global:au_SearchReplace {
     @{
         "$($Latest.PackageName).nuspec" = @{
-            "<packageSourceUrl>[^<]*</packageSourceUrl>" = "<packageSourceUrl>https://github.com/brogers5/chocolatey-package-$($Latest.PackageName)/tree/v$($Latest.Version)</packageSourceUrl>"
-            "<licenseUrl>[^<]*</licenseUrl>"             = "<licenseUrl>https://github.com/$($softwareRepo)/blob/$($Latest.SoftwareVersion)/LICENSE</licenseUrl>"
-            "<projectSourceUrl>[^<]*</projectSourceUrl>" = "<projectSourceUrl>https://github.com/$($softwareRepo)/tree/$($Latest.SoftwareVersion)</projectSourceUrl>"
-            "<releaseNotes>[^<]*</releaseNotes>"         = "<releaseNotes>https://github.com/$($softwareRepo)/releases/tag/$($Latest.SoftwareVersion)</releaseNotes>"
-            "<copyright>[^<]*</copyright>"               = "<copyright>Copyright (c) 2013-$(Get-Date -Format yyyy) Christopher Serr and Sergey Papushin</copyright>"
+            '<packageSourceUrl>[^<]*</packageSourceUrl>' = "<packageSourceUrl>https://github.com/brogers5/chocolatey-package-$($Latest.PackageName)/tree/v$($Latest.Version)</packageSourceUrl>"
+            '<licenseUrl>[^<]*</licenseUrl>'             = "<licenseUrl>https://github.com/$($softwareRepo)/blob/$($Latest.SoftwareVersion)/LICENSE</licenseUrl>"
+            '<projectSourceUrl>[^<]*</projectSourceUrl>' = "<projectSourceUrl>https://github.com/$($softwareRepo)/tree/$($Latest.SoftwareVersion)</projectSourceUrl>"
+            '<releaseNotes>[^<]*</releaseNotes>'         = "<releaseNotes>https://github.com/$($softwareRepo)/releases/tag/$($Latest.SoftwareVersion)</releaseNotes>"
+            '<copyright>[^<]*</copyright>'               = "<copyright>Copyright (c) 2013-$(Get-Date -Format yyyy) Christopher Serr and Sergey Papushin</copyright>"
         }
         'legal\VERIFICATION.txt'        = @{
             '%checksumValue%'   = "$($Latest.Checksum32)"
