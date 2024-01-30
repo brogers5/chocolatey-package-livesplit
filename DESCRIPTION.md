@@ -1,12 +1,3 @@
-
----
-
-### [choco://livesplit](choco://livesplit)
-
-To use choco:// protocol URLs, install [(unofficial) choco:// Protocol support](https://community.chocolatey.org/packages/choco-protocol-support)
-
----
-
 ## LiveSplit
 
 LiveSplit is a timer program for speedrunners that is both easy to use and full of features.
