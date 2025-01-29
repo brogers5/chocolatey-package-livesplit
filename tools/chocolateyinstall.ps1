@@ -1,13 +1,13 @@
 ﻿$ErrorActionPreference = 'Stop'
 
-$toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
-
 $archiveFileName = 'LiveSplit_1.8.30.zip'
+$toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 $archiveFilePath = Join-Path -Path $toolsDir -ChildPath $archiveFileName
+$unzipLocation = Join-Path -Path (Get-ToolsLocation) -ChildPath $env:ChocolateyPackageName
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = $toolsDir
+  unzipLocation = $unzipLocation
   fileFullPath  = $archiveFilePath
 }
 
@@ -19,30 +19,23 @@ Remove-Item $archiveFilePath -Force -ErrorAction SilentlyContinue
 $softwareName = 'LiveSplit'
 $binaryFileName = 'LiveSplit.exe'
 $linkName = "$softwareName.lnk"
-$targetPath = Join-Path -Path $toolsDir -ChildPath $binaryFileName
+$targetPath = Join-Path -Path $unzipLocation -ChildPath $binaryFileName
 
 $pp = Get-PackageParameters
-if ($pp.NoShim) {
-  #Create shim ignore file
-  $ignoreFilePath = Join-Path -Path $toolsDir -ChildPath "$binaryFileName.ignore"
-  Set-Content -Path $ignoreFilePath -Value $null -ErrorAction SilentlyContinue
-}
-else {
-  #Create GUI shim
-  $guiShimPath = Join-Path -Path $toolsDir -ChildPath "$binaryFileName.gui"
-  Set-Content -Path $guiShimPath -Value $null -ErrorAction SilentlyContinue
+if (!$pp.NoShim) {
+  Install-BinFile -Name $softwareName -Path $targetPath -UseStart
 }
 
 if (!$pp.NoDesktopShortcut) {
   $desktopDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::DesktopDirectory)
   $shortcutFilePath = Join-Path -Path $desktopDirectory -ChildPath $linkName
-  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -RunAsAdmin -ErrorAction SilentlyContinue
+  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -ErrorAction SilentlyContinue
 }
 
 if (!$pp.NoProgramsShortcut) {
   $programsDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::Programs)
   $shortcutFilePath = Join-Path -Path $programsDirectory -ChildPath $linkName
-  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -RunAsAdmin -ErrorAction SilentlyContinue
+  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -ErrorAction SilentlyContinue
 }
 
 if ($pp.Start) {
