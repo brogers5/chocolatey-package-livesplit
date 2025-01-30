@@ -5,18 +5,18 @@ in verifying that this package's contents are trustworthy.
 The packaged Windows archive is available for independent download via the Releases page on
 LiveSplit's GitHub repository. A download link for the packaged version is included at the
 following URL:
-https://github.com/LiveSplit/LiveSplit/releases/tag/1.8.31
+https://github.com/LiveSplit/LiveSplit/releases/tag/1.8.32
 
 For convenience, this is a direct URL to the relevant asset:
-https://github.com/LiveSplit/LiveSplit/releases/download/1.8.31/LiveSplit_1.8.31.zip
+https://github.com/LiveSplit/LiveSplit/releases/download/1.8.32/LiveSplit_1.8.32.zip
 
 The following PowerShell command will print a calculated SHA256 hash:
 
-    (Get-FileHash -Path LiveSplit_1.8.31.zip -Algorithm SHA256).Hash
+    (Get-FileHash -Path LiveSplit_1.8.32.zip -Algorithm SHA256).Hash
 
 This command should be executed against an independently downloaded archive, as well as the copy
 distributed with the package. Both hash values should be identical. A matching hash value should
 confirm that no corruption or tampering has occurred during this package's generation process.
 
 For reference, the following SHA256 hash was calculated during the package's automated creation:
-2DB68A67F75BA382ED9CCCC2DB2697749E843D3828B0F8BAB1FAD06E5CCAF905
+F6F7D67A6F31CDD18993B1FE334F3B7F278AEC34C58161B4B1B5CA86ECF894B0
