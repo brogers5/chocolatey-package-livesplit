@@ -65,7 +65,5 @@ LiveSplit is a timer program for speedrunners that is both easy to use and full 
     <file src="tools\LiveSplit_*.zip" target="tools" />
     <file src="legal\LICENSE.txt" target="legal" />
     <file src="legal\VERIFICATION.txt" target="legal" />
-    <file src="tools\LiveSplit.Register.exe.ignore" target="tools" />
-    <file src="tools\Components\CefSharp.BrowserSubprocess.exe.ignore" target="tools\Components" />
   </files>
 </package>
