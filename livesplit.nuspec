@@ -3,17 +3,17 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>livesplit</id>
-    <version>1.8.32</version>
-    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-livesplit/tree/v1.8.32</packageSourceUrl>
+    <version>1.8.33</version>
+    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-livesplit/tree/v1.8.33</packageSourceUrl>
     <owners>kraftydinosaur geo_trader sublym0nal davvolun</owners>
     <title>LiveSplit</title>
     <authors>Christopher Serr (CryZe107), Sergey Papushin (wooferzfg)</authors>
     <projectUrl>https://livesplit.org/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-livesplit@438486d57a08edc15012d6151f9da3be01263112/livesplit.png</iconUrl>
     <copyright>Copyright (c) 2013-2025 Christopher Serr and Sergey Papushin</copyright>
-    <licenseUrl>https://github.com/LiveSplit/LiveSplit/blob/1.8.32/LICENSE</licenseUrl>
+    <licenseUrl>https://github.com/LiveSplit/LiveSplit/blob/1.8.33/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/LiveSplit/LiveSplit/tree/1.8.32</projectSourceUrl>
+    <projectSourceUrl>https://github.com/LiveSplit/LiveSplit/tree/1.8.33</projectSourceUrl>
     <docsUrl>https://livesplit.org/faq/</docsUrl>
     <bugTrackerUrl>https://github.com/LiveSplit/LiveSplit/issues</bugTrackerUrl>
     <tags>livesplit speedrunning speedruns speedrun timer split game games portable embedded foss</tags>
@@ -53,7 +53,7 @@ LiveSplit is a timer program for speedrunners that is both easy to use and full 
 * `/NoProgramsShortcut` - Opt out of creating a Programs shortcut in your Start Menu.
 * `/Start` - Automatically start LiveSplit after installation completes.
 ]]></description>
-    <releaseNotes>https://github.com/LiveSplit/LiveSplit/releases/tag/1.8.32</releaseNotes>
+    <releaseNotes>https://github.com/LiveSplit/LiveSplit/releases/tag/1.8.33</releaseNotes>
     <dependencies>
       <dependency id="netfx-4.8.1" version="4.8.1.0" />
     </dependencies>
