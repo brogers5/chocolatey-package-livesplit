@@ -63,7 +63,7 @@ LiveSplit is a timer program for speedrunners that is both easy to use and full 
     <file src="tools\chocolateyinstall.ps1" target="tools" />
     <file src="tools\chocolateyuninstall.ps1" target="tools" />
     <file src="tools\LiveSplit_*.zip" target="tools" />
-    <file src="legal\LICENSE.txt" target="legal" />
-    <file src="legal\VERIFICATION.txt" target="legal" />
+    <file src="tools\LICENSE.txt" target="tools" />
+    <file src="tools\VERIFICATION.txt" target="tools" />
   </files>
 </package>

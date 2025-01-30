@@ -3,7 +3,7 @@ Import-Module au
 $currentPath = (Split-Path $MyInvocation.MyCommand.Definition)
 . $currentPath\helpers.ps1
 
-$legalPath = Join-Path -Path $currentPath -ChildPath 'legal'
+$toolsPath = Join-Path -Path $currentPath -ChildPath 'tools'
 $softwareRepo = 'LiveSplit/LiveSplit'
 
 function global:au_GetLatest {
@@ -19,8 +19,8 @@ function global:au_GetLatest {
 function global:au_BeforeUpdate ($Package) {
     Get-RemoteFiles -Purge -NoSuffix -Algorithm sha256
 
-    $templateFilePath = Join-Path -Path $legalPath -ChildPath 'VERIFICATION.txt.template'
-    $verificationFilePath = Join-Path -Path $legalPath -ChildPath 'VERIFICATION.txt'
+    $templateFilePath = Join-Path -Path $toolsPath -ChildPath 'VERIFICATION.txt.template'
+    $verificationFilePath = Join-Path -Path $toolsPath -ChildPath 'VERIFICATION.txt'
     Copy-Item -Path $templateFilePath -Destination $verificationFilePath -Force
 
     Set-DescriptionFromReadme -Package $Package -ReadmePath '.\DESCRIPTION.md'
@@ -30,7 +30,7 @@ function global:au_AfterUpdate ($Package) {
     $licenseUri = "https://raw.githubusercontent.com/$($softwareRepo)/$($Latest.SoftwareVersion)/LICENSE"
     $licenseContents = Invoke-WebRequest -Uri $licenseUri -UseBasicParsing
 
-    $licensePath = Join-Path -Path $legalPath -ChildPath 'LICENSE.txt'
+    $licensePath = Join-Path -Path $toolsPath -ChildPath 'LICENSE.txt'
     Set-Content -Path $licensePath -Value "From: $licenseUri`r`n`r`n$licenseContents"
 }
 
@@ -43,7 +43,7 @@ function global:au_SearchReplace {
             '<releaseNotes>[^<]*</releaseNotes>'         = "<releaseNotes>https://github.com/$($softwareRepo)/releases/tag/$($Latest.SoftwareVersion)</releaseNotes>"
             '<copyright>[^<]*</copyright>'               = "<copyright>Copyright (c) 2013-$(Get-Date -Format yyyy) Christopher Serr and Sergey Papushin</copyright>"
         }
-        'legal\VERIFICATION.txt'        = @{
+        'tools\VERIFICATION.txt'        = @{
             '%checksumValue%'   = "$($Latest.Checksum32)"
             '%checksumType%'    = "$($Latest.ChecksumType32.ToUpper())"
             '%tagReleaseUrl%'   = "https://github.com/$($softwareRepo)/releases/tag/$($Latest.SoftwareVersion)"
