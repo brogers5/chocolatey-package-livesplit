@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop'
 
-$archiveFileName = 'LiveSplit_1.8.35.zip'
+$archiveFileName = 'LiveSplit_1.8.36.zip'
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 $archiveFilePath = Join-Path -Path $toolsDir -ChildPath $archiveFileName
 $unzipLocation = Join-Path -Path (Get-ToolsLocation) -ChildPath $env:ChocolateyPackageName
